@@ -32,7 +32,11 @@ class GTFSDataValidator:
     dfs["agency"].fillna("Unknown", inplace=True)
     dfs["stop_amenities"].dropna(subset=["shelter", "washroom", "bike_rack", "bench"], inplace=True)
 
+  def duplicate_sum(self, dfs: dict):
+    return duplicates_summary = {name: df.duplicated().sum() for name, df in dfs.items()}
+
   def validate(self, dfs: dict):
     self.remove_duplicates(dfs)
     self.handle_missing_values(dfs)
+    self.duplicate_sum(dfs)
     return dfs
