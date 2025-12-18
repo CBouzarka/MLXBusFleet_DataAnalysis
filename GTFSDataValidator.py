@@ -27,16 +27,25 @@ class GTFSDataValidator:
     dfs["transfers"].fillna("Unknown", inplace=True)
     dfs["feed_info"].fillna("Unknown", inplace=True)
     dfs["fare_rules"].fillna("Unknown", inplace=True)
+    self.swap_columns(dfs["fare_attributes"], "payment_method", "transfers")
     dfs["fare_attributes"].dropna(subset=["price", "transfers"], inplace=True)
     dfs["fare_attributes"].fillna({"currency_type":"Unknown", "payment_method":"Unknown"}, inplace=True)
     dfs["agency"].fillna("Unknown", inplace=True)
     dfs["stop_amenities"].dropna(subset=["shelter", "washroom", "bike_rack", "bench"], inplace=True)
 
-  def duplicate_sum(self, dfs: dict):
+  def duplicates_summary(self, dfs: dict):
     return duplicates_summary = {name: df.duplicated().sum() for name, df in dfs.items()}
+
+  def missing_values_summary(self, dfs: dict):
+    return missing_values = {name: df.isnull().sum() for name, df in dfs.items()}
+
+  def swap_columns(self, df, col1, col2):
+    cols = list(df.columns)
+    i, j = cols.index(col1), cols.index(col2)
+    cols[i], cols[j] = cols[j], cols[i]
+    return df[cols]
 
   def validate(self, dfs: dict):
     self.remove_duplicates(dfs)
     self.handle_missing_values(dfs)
-    self.duplicate_sum(dfs)
     return dfs
