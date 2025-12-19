@@ -41,7 +41,7 @@ class GTFSAnalyzer:
 
   # find peak hours stops
   def top_stops_during_peak(self, peak_start, peak_end, top_n):
-    start_sec = TimeUtils.gtfs_time_to_seconds(peak_start)
+    start_sec = TimeUtils.gtfs_time_to_seconds(peak_start)  # timeutils class was added to convert time into h-m-s format
     end_sec = TimeUtils.gtfs_time_to_seconds(peak_end)
 
     self.stop_times["arrival_secs"] = self.stop_times["arrival_time"].apply(TimeUtils.gtfs_time_to_seconds)
