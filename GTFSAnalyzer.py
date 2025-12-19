@@ -66,3 +66,25 @@ class GTFSAnalyzer:
     plt.ylabel("Number of Stops")
     plt.title("Distribution of Stop Arrivals (Entire Day)")
     plt.show()
+
+  # average trip duration per route
+  def average_duration_per_route(self):
+    self.stop_times["arrival_secs"] = self.stop_times["arrival_time"].apply(TimeUtils.gtfs_time_to_seconds)
+    self.stop_times["departure_secs"] = self.stop_times["departure_time"].apply(TimeUtils.gtfs_time_to_seconds)
+
+    durations = (
+      self.stop_times
+        .groupby("trip_id")
+        .agg(start=("departure_secs", "min"),
+        end=("arrival_secs", "max"))
+        .reset_index())
+
+    durations["duration_min"] = (durations["end"] - durations["start"]) / 60
+
+    return (
+      durations
+      .merge(self.trips[["trip_id", "route_id"]], on="trip_id")
+      .groupby("route_id")["duration_min"]
+      .mean()
+      .reset_index(name="avg_duration_min")
+      .merge(self.routes, on="route_id", how="left"))
