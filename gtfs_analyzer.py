@@ -15,7 +15,9 @@ class GTFSAnalyzer:
     self.fare_rules = dfs["fare_rules"]
     self.fare_attributes = dfs["fare_attributes"]
     self.agency = dfs["agency"]
+    self.amenities = dfs["amentities"]
 
+  # calculate trips per route for a day
   def trips_per_route_for_day(self, date_str):
     date = datetime.strptime(date_str, "%Y-%m-%d")
     day_col = date.strftime("%A").lower()
