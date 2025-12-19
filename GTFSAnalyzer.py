@@ -36,7 +36,8 @@ class GTFSAnalyzer:
 
   # find top n routes
   def top_n_routes_by_trips(self, df, n):
-    return df.nlargest(n, "total_trips")
+    df = df.nlargest(n, "total_trips")
+    return df
 
   # find peak hours stops
   def top_stops_during_peak(self, peak_start, peak_end, top_n):
@@ -88,3 +89,14 @@ class GTFSAnalyzer:
       .mean()
       .reset_index(name="avg_duration_min")
       .merge(self.routes, on="route_id", how="left"))
+
+  def detect_unusual_trip_durations(self, df):
+    Q1 = df["avg_duration_min"].quantile(0.25)
+    Q3 = df["avg_duration_min"].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+
+    df["unusual_trip_type"] = df["avg_duration_min"].apply(lambda x: "Short" if x < lower else ("Long" if x > upper else "Normal"))
+    return df
