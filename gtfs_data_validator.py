@@ -36,11 +36,13 @@ class GTFSDataValidator:
 
   # find and summarize duplicates
   def duplicates_summary(self, dfs: dict):
-    return duplicates_summary = {name: df.duplicated().sum() for name, df in dfs.items()}
+    duplicates_summary = {name: df.duplicated().sum() for name, df in dfs.items()}
+    return duplicates_summary
 
   # find and summarize missing values
   def missing_values_summary(self, dfs: dict):
-    return missing_values = {name: df.isnull().sum() for name, df in dfs.items()}
+    missing_values = {name: df.isnull().sum() for name, df in dfs.items()}
+    return missing_values
 
   def validate(self, dfs: dict):
     self.remove_duplicates(dfs)
