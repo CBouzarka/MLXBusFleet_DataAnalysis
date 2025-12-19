@@ -1,5 +1,5 @@
 from datetime import datetime
-from TimeUtils import TimeUtils
+from time_utils import TimeUtils
 import matplotlib.pyplot as plt
 
 class GTFSAnalyzer:
