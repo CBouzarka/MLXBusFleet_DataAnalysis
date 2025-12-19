@@ -12,6 +12,6 @@ The analysis includes:
 - Estimation of average trip durations per route
 
 # How to Run the Project
-Local Execution
-From the project directory:
-python main.py
+- Local Execution
+- From the project directory:
+  python main.py
