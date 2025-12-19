@@ -4,6 +4,7 @@ class GTFSLoader:
     def __init__(self, path: str):
         self.path = path
 
+    # loading data into dataframes
     def _load_from_folder(self):
         return {
             "routes": pd.read_csv(f"{self.path}/routes.txt"),
@@ -18,5 +19,4 @@ class GTFSLoader:
             "fare_attributes": pd.read_csv(f"{self.path}/fare_attributes.txt"),
             "agency": pd.read_csv(f"{self.path}/agency.txt"),
             "stop_amenities": pd.read_csv(f"{self.path}/stop_amenities.txt"),
-
         }
