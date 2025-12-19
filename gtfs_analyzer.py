@@ -68,7 +68,7 @@ class GTFSAnalyzer:
     plt.title("Distribution of Stop Arrivals (Entire Day)")
     plt.show()
 
-  # average trip duration per route
+  # find average trip duration per route
   def average_duration_per_route(self):
     self.stop_times["arrival_secs"] = self.stop_times["arrival_time"].apply(TimeUtils.gtfs_time_to_seconds)
     self.stop_times["departure_secs"] = self.stop_times["departure_time"].apply(TimeUtils.gtfs_time_to_seconds)
