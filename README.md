@@ -15,3 +15,8 @@ The analysis includes:
 - Local Execution
 - From the project directory:
   python main.py
+
+# Screenshots of the code sections
+<img width="970" height="780" alt="image" src="https://github.com/user-attachments/assets/07e3bb00-e750-4723-ab60-82a015eb77bc" />
+
+
