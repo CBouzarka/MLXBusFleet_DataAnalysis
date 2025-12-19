@@ -41,7 +41,7 @@ def main():
   # 3c) Top 5 stops with highest number of arrivals during peak hours
   peak_stops = analyzer.top_stops_during_peak(
       peak_start="07:00:00",
-      peak_end="10:00:00",
+      peak_end="09:00:00",
       top_n=10)
   
   print("\nTop bus stops during peak hours (07:00–10:00):")
