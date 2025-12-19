@@ -33,3 +33,7 @@ class GTFSAnalyzer:
         .reset_index(name="total_trips")
         .merge(self.routes, on="route_id", how="left")
         .sort_values("total_trips", ascending=False))
+
+  # top n routes
+  def top_n_routes_by_trips(self, df, n):
+    return df.nlargest(n, "total_trips")
