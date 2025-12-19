@@ -1,5 +1,6 @@
 from datetime import datetime
 from TimeUtils import TimeUtils
+import matplotlib.pyplot as plt
 
 class GTFSAnalyzer:
   def __init__(self, dfs):
@@ -55,3 +56,13 @@ class GTFSAnalyzer:
       .merge(self.stops, on="stop_id", how="left")
       .sort_values("arrival_count", ascending=False)
       .head(top_n))
+
+  # plot histogram of stop arrivals distribution
+  def plot_arrival_histogram(self):
+    arrivals = (self.stop_times.groupby("stop_id").size())
+    plt.figure()
+    plt.hist(arrivals, bins=30)
+    plt.xlabel("Arrivals per Stop")
+    plt.ylabel("Number of Stops")
+    plt.title("Distribution of Stop Arrivals (Entire Day)")
+    plt.show()
