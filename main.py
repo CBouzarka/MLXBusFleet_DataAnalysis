@@ -1,3 +1,6 @@
+from gtfs_loader import GTFSLoader
+from gtfs_validator import GTFSDataValidator
+from gtfs_analyzer import GTFSAnalyzer
 def main():
   # 1) Load GTFS data
   loader = GTFSLoader(path="/content", zipped=False)
