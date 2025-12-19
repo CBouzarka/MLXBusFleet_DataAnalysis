@@ -92,6 +92,7 @@ class GTFSAnalyzer:
       .reset_index(name="avg_duration_min")
       .merge(self.routes, on="route_id", how="left"))
 
+  # detect unusual trip durations
   def detect_unusual_trip_durations(self, df):
     Q1 = df["avg_duration_min"].quantile(0.25)
     Q3 = df["avg_duration_min"].quantile(0.75)
