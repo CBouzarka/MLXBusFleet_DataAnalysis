@@ -44,7 +44,7 @@ def main():
       peak_end="09:00:00",
       top_n=10)
   
-  print("\nTop bus stops during peak hours (07:00–10:00):")
+  print("\nTop bus stops during peak hours (07:00–09:00):")
   print(peak_stops)
   
   # 3d) Histogram of arrivals distribution for a day
