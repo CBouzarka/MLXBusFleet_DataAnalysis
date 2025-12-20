@@ -12,14 +12,11 @@ def main():
   validator = GTFSDataValidator()
   dfs = validator.validate(dfs)
   print("Data quality checks completed (missing values & duplicates handled).")
+  print("Report missing values and duplicates")
   missing_summary = validator.missing_values_summary(dfs)
   for name, summary in missing_summary.items():
     print(f"\nMissing values in {name}:")
     print(summary)
-
-  duplicate_summary = validator.duplicates_summary(dfs)
-  for name, count in duplicate_summary.items():  
-    print(f"{name} duplicate rows: {count}
   
   # initialize analyzer
   analyzer = GTFSAnalyzer(dfs)
@@ -52,6 +49,6 @@ def main():
   print(avg_durations.head())
   
   # 4b) find unusually long / short routes
-  unusual_trip_durations = analyzer.detect_duration_outliers(avg_durations)
+  unusual_trip_durations = analyzer.detect_unusual_trip_durations(avg_durations)
   print("\nRoutes with unusually long or short trip durations:")
   print(unusual_trip_durations[unusual_trip_durations["unusual_trip_durations"] != "Normal"])
