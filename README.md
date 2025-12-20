@@ -55,4 +55,7 @@ The analysis includes:
 
 <img width="1106" height="635" alt="image" src="https://github.com/user-attachments/assets/ef11e552-94c0-4232-abe5-cdfa7b73df51" />
 
-<img width="1735" height="423" alt="image" src="https://github.com/user-attachments/assets/102caad9-e69b-42df-87a0-24224c54c5a1" />
+<img width="1114" height="325" alt="image" src="https://github.com/user-attachments/assets/1b15b539-b831-48ea-be9b-328a50745a0f" />
+
+<img width="1684" height="326" alt="image" src="https://github.com/user-attachments/assets/3b35ba8c-4da1-4b8e-8df1-df23e0770f05" />
+
