@@ -41,7 +41,7 @@ class GTFSDataValidator:
 
   # find and summarize missing values
   def missing_values_summary(self, dfs: dict):
-    missing_values = {name: df.isnull().sum() for name, df in dfs.items()}
+    missing_values = {name: df.isna().sum() for name, df in dfs.items()}
     return missing_values
 
   def validate(self, dfs: dict):
