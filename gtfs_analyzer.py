@@ -15,7 +15,7 @@ class GTFSAnalyzer:
     self.fare_rules = dfs["fare_rules"]
     self.fare_attributes = dfs["fare_attributes"]
     self.agency = dfs["agency"]
-    self.amenities = dfs["amentities"]
+    self.stop_amenities = dfs["stop_amenities"]
 
   # calculate trips per route for a day
   def trips_per_route_for_day(self, date_str):
@@ -38,8 +38,7 @@ class GTFSAnalyzer:
 
   # find top n routes
   def top_n_routes_by_trips(self, df, n):
-    df = df.nlargest(n, "total_trips")
-    return df
+    return df.nlargest(n, "total_trips")
 
   # find peak hours stops
   def top_stops_during_peak(self, peak_start, peak_end, top_n):
@@ -62,6 +61,8 @@ class GTFSAnalyzer:
 
   # plot histogram of stop arrivals distribution
   def plot_arrival_histogram(self):
+    import matplotlib.pyplot as plt
+    
     arrivals = (self.stop_times.groupby("stop_id").size())
     plt.figure()
     plt.hist(arrivals, bins=30)
