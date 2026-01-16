@@ -10,6 +10,7 @@ The analysis includes:
 - Determination of trip counts per route for a given day
 - Identification of busiest routes
 - Identification of Peak-hour stops with highest arrivals analysis
+- Plotting a histogram of arrivals distribution for a day
 - Estimation of average trip durations per route
 - Identification of unusually long or short trip durations
 
