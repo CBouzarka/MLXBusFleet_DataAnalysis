@@ -5,11 +5,13 @@ This project analyzes GTFS (General Transit Feed Specification) data for Metroli
 It demonstrates clean software design principles such as separation of concerns, modularity, and reproducible data analysis.
 The analysis includes:
 - Loading GTFS .txt files into pandas DataFrames
+- Data cleaning
 - Basic data exploration and aggregation
 - Determination of trip counts per route for a given day
 - Identification of busiest routes
 - Identification of Peak-hour stops with highest arrivals analysis
 - Estimation of average trip durations per route
+- Identification of unusually long or short trip durations
 
 # How to Run the Project
 - Local Execution
